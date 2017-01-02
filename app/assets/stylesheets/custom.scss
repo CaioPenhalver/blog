@@ -1,0 +1,11 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/*Article cards*/
+.thumbnail{
+    min-height: 400px;
+}
+.text-card{
+    height: 150px;
+    overflow: hidden;
+}
