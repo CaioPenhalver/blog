@@ -57,3 +57,7 @@ gem 'bootstrap-sass', '3.3.7'
 
 #authentication	
 gem 'bcrypt'
+
+#image uploader
+gem 'carrierwave', '~> 1.0'
+gem 'mini_magick'
