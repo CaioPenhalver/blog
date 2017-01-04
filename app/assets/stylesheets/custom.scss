@@ -3,9 +3,14 @@
 
 /*Article cards*/
 .thumbnail{
-    min-height: 400px;
+    min-height: 200px;
 }
 .text-card{
-    height: 150px;
+    height: 100px;
     overflow: hidden;
+    word-break: keep-all;
+}
+.caption{
+    overflow: hidden;
+    word-break: keep-all;
 }

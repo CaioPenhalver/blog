@@ -1,14 +1,43 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
-
-<p>
-  <strong>Body:</strong>
-  <%= @article.body %>
-</p>
-
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+  <%= render 'go_back_button' %>
+    <% if current_admin_user %>
+      <p>
+        <%= link_to 'Edit', edit_article_path(@article), :class => "btn btn-primary" %>
+        <%= link_to 'Destroy', @article, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %>
+      </p>
+    <% end %>
+    <h1><%= @article.title %></h1>
+    <p> <%= @article.body %></p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <h3>Comentários</h3>
+    <% if notice %>
+      <div class="alert alert-success" role="alert"><p id="notice"><%= notice %></p></div>
+    <% elsif alert %>
+      <div class="alert alert-danger" role="alert"><p id="alert"><%= alert %></p></div>
+    <% end %>
+    <%= form_tag article_comments_path(@article) do %>
+      <div class="form-group">
+        <%= label_tag :body %>
+        <%= text_area_tag :body, params[:body], class: "form-control" %>
+      </div>
+      <%= submit_tag "Add", class: "btn btn-primary" %>
+    <% end %>
+    <% @article.comments.each do |comment| %>
+      <div class="media">
+        <div class="media-left media-middle">
+          <a href="#">
+            <img class="media-object" src="" alt="some image">
+          </a>
+        </div>
+        <div class="media-body">
+          <h4 class="media-heading"><%= comment.user.name %></h4>
+          <p><%= comment.body %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

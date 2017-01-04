@@ -14,10 +14,16 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-        <% if admin? %>
-          <li><%= link_to 'Create post', new_article_path, method: :get %></li>
-          <li><%= link_to 'Manage posts', articles_path, method: :get %></li>
+        <% if current_admin_user %>
+          <li <% if @tab == "create" %> class="active" <% end %> >
+            <%= link_to 'Create post', new_article_path, method: :get %>
+          </li>
+          <li <% if @tab == "home" %> class="active" <% end %> >
+            <%= link_to 'Manage posts', articles_path, method: :get %>
+          </li>
+        <% elsif current_user %>
+          <li class="active">
+            <%= link_to 'Home', articles_path, method: :get %>
         <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
