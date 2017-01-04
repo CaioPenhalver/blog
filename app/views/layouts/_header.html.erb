@@ -21,9 +21,10 @@
           <li <% if @tab == "home" %> class="active" <% end %> >
             <%= link_to 'Manage posts', articles_path, method: :get %>
           </li>
-        <% elsif current_user %>
+        <% else %>
           <li class="active">
             <%= link_to 'Home', articles_path, method: :get %>
+          </li>
         <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
