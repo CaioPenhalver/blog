@@ -13,6 +13,15 @@ class CommentsController < ApplicationController
         end
     end
 
+    def destroy
+        @article = Article.find(params[:article_id])
+        @comment = Comment.find(params[:id])
+        @comment.destroy
+        respond_to do |format|
+            format.html { redirect_to @article, notice: 'Article was successfully destroyed.' }
+        end
+    end
+
     private
 
     def comment_params
