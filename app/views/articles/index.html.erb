@@ -12,8 +12,8 @@
           <div class="col-md-6">
             <div class="thumbnail">
               <%= link_to(:controller => "articles", :action => "show", :id => article) do %>
-                <img src="" alt="Some image">
-              <% end %>
+                <%= image_tag article.image.medium.url %>
+             <% end %>
                 <div class="caption">
                   <%= link_to(:controller => "articles", :action => "show", :id => article) do %>
                     <h3><%= article.title %></h3>

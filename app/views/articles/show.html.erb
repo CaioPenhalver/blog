@@ -7,6 +7,11 @@
         <%= link_to 'Destroy', @article, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %>
       </p>
     <% end %>
+
+    <div style="margin: auto; width: 33%; padding:15px;">
+      <%= image_tag @article.image.medium.url, class: "thumbnail" %>
+    </div>
+    
     <h1><%= @article.title %></h1>
     <p> <%= @article.body %></p>
   </div>
@@ -29,9 +34,7 @@
     <% @article.comments.each do |comment| %>
       <div class="media">
         <div class="media-left media-middle">
-          <a href="#">
-            <img class="media-object" src="" alt="some image">
-          </a>
+          <%= image_tag comment.user.image.thumb.url, class: "media-object" %>
         </div>
         <div class="media-body">
           <h4 class="media-heading"><%= comment.user.name %></h4>
